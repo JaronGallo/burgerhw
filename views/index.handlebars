@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <h1 class="col-md-12 text-center">Eat the Burger!!!</h1>
+        <iframe src="https://giphy.com/embed/mVWOIgoVI7edW" width="480" height="245" frameBorder="0" class="text-center col-md-12" allowFullScreen></iframe>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            {{#each burgerData}} {{#unless this.devoured}}
+            <div>
+                <pre>{{this.id}}. {{this.burger_name}}</pre>
+            </div>
+            <div>
+                <form method="PUT" action="/burgers/update?_method=PUT" class="text-center">
+                    <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+                    <button type="submit" class="btn btn-default ">Devour It!</button>
+                </form>
+                <br>
+            </div>
+            {{/unless}} {{/each}}
+        </div>
+
+        <div class="col-md-6">
+            <div>
+                {{#each burgerData}} {{#if this.devoured}}
+
+                <input class="col-md-12" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly> {{/if}} {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            <form class="form-group">
+                <div class="col-md-12">
+                    <label>Add a Burger</label>
+                    <input class="form-control" placeholder="Enter Burger">
+                </div>
+
+                <div class="col-md-12">
+                    <br>
+                    <button class="btn btn-primary" type="submit">Add Burger</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
